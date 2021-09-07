@@ -1,8 +1,11 @@
 import pytest
+# print('reached here')
 import json
+# print('reached here too')
 from fastapi.testclient import TestClient
-
+# print('reached here as well')
 from main import app
+print('didnt reach here')
 
 client = TestClient(app)
 
@@ -39,3 +42,27 @@ def test_read_single_release(release_id):
       expected_output_for_get_release = f"{{ \"release\": {release4_payload} }}"
     # convert json string back to json object for comparison
     assert response.json() == json.loads(expected_output_for_get_release)
+
+
+# def test_read_tasks():
+#     response = client.get("/tasks")
+#     assert response.status_code == 200
+#     assert response.json() == expected_output_for_get_tasks
+
+# @pytest.mark.parametrize("release_id", [8, 9, 10])
+# TODO: might need to add a release_id paramter
+# def test_read_single_task(task_id):
+#     response = client.get(f"/releases/{release_id}/tasks/{task_id}")
+#     assert response.status_code == 200
+#     if task_id == 8:
+#       # convert py dictionary to json string
+#       task8_payload = json.dumps(expected_output_for_get_tasks['tasks'][0])
+#       expected_output_for_get_task = f"{{ \"tasks\": {task8_payload} }}"
+#     elif task_id == 9:
+#       task9_payload = json.dumps(expected_output_for_get_tasks['tasks'][1])
+#       expected_output_for_get_task = f"{{ \"tasks\": {task9_payload} }}"
+#     elif task_id == 10:
+#       task10_payload = json.dumps(expected_output_for_get_tasks['tasks'][2])
+#       expected_output_for_get_task = f"{{ \"tasks\": {task10_payload} }}"
+#     assert response.json() == json.loads(expected_output_for_get_task)
+
