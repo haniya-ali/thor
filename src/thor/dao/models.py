@@ -10,13 +10,13 @@ Base = declarative_base()
 class Release(Base):
     __tablename__ = "releases"
 
-    id = Column(Integer, primary_key=True)  # Unique arbitrary int assigned when input
+    release_id = Column(Integer, primary_key=True)  # Unique arbitrary int assigned when input
     version = Column(String)  # expected to be in form 20XX.YY
     result = Column(String)  # expected to be "success", "failed", or "in progress"
 
     def __repr__(self):
         return "ID: '{}', Version: '{}', Result: '{}'".format(
-            self.id, self.version, self.result
+            self.release_id, self.version, self.result
         )
 
 

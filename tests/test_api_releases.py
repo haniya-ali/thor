@@ -14,12 +14,12 @@ expected_output_for_get_releases = {
     {
       "version": "2021.09",
       "result": "In Progress",
-      "id": 3
+      "release_id": 3
     },
     {
       "version": "2021.07",
       "result": "Completed",
-      "id": 4
+      "release_id": 4
     }
   ]
 }

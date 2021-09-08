@@ -95,6 +95,7 @@ def readRelease(id):
     with session_scope() as session:
       outstring = "The ID (" + str(id) + ") is not in the database. "
 
+      rel = None
       try:
         rel = session.query(Release).get(id)
         assert rel != None
@@ -110,11 +111,12 @@ def readRelease(id):
       session.expunge_all()
       return rel
 
-
+# why do we have 2 of these?
 def readRelease(id):
     with session_scope() as s:
         # outstring = "The ID (" + str(id) + ") is not in the database. "
 
+        rel = None
         try:
             rel = s.query(Release).get(id)
             # print(rel, rel == None)
@@ -175,5 +177,5 @@ def getRKeys():
     
     with session_scope() as session:
         for rel in session.query(Release):
-            keylist.append(rel.id)
+            keylist.append(rel.release_id)
         return keylist
